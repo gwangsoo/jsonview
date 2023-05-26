@@ -28,9 +28,9 @@ public class UserDTO {
     @JsonView(BookDTO.Views.Detail.class)
     private Set<BookDTO> books;
 
-    public static interface Views {
-        public static interface Id {}
-        public static interface Min extends Id {}
-        public static interface Detail extends Min, GroupDTO.Views.Id, BookDTO.Views.Detail {}
+    public interface Views {
+        interface Id {}
+        interface Min extends Id {}
+        interface Detail extends Min, GroupDTO.Views.Id, BookDTO.Views.Detail {}
     }
 }

@@ -22,9 +22,9 @@ public class BookDTO {
     @JsonView(LibraryDTO.Views.Min.class)
     private LibraryDTO library;
 
-    public static interface Views {
-        public static interface Id {}
-        public static interface Min extends Id {}
-        public static interface Detail extends Min, LibraryDTO.Views.Min {}
+    public interface Views {
+        interface Id {}
+        interface Min extends Id {}
+        interface Detail extends Min, LibraryDTO.Views.Min {}
     }
 }

@@ -18,9 +18,9 @@ public class GroupDTO {
     @JsonView(Views.Detail.class)
     private String description;
 
-    public static interface Views {
-        public static interface Id {}
-        public static interface Min extends Id {}
-        public static interface Detail extends Min {}
+    public interface Views {
+        interface Id {}
+        interface Min extends Id {}
+        interface Detail extends Min {}
     }
 }
