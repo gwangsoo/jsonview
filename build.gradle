@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.7.12'
-    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'org.springframework.boot' version '2.7.2'
+    id 'io.spring.dependency-management' version '1.0.12.RELEASE'
 }
 
 group = 'com.xrfriends'
@@ -10,6 +10,14 @@ sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
+}
+
+ext {
+    set('springVersion', "2.7.2")
+    set('springCloudVersion', "2021.0.5")
+    set('resilience4jVersion', "1.7.0")
+    set('openfeignVersion', "11.8")
+    set('swaggerVersion', "3.0.0")
 }
 
 dependencies {
@@ -24,6 +32,43 @@ dependencies {
 
     implementation "io.springfox:springfox-swagger-ui:3.0.0"
     implementation "io.springfox:springfox-boot-starter:3.0.0"
+
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+    runtimeOnly 'org.postgresql:postgresql'
+    implementation "org.apache.commons:commons-lang3"
+
+    implementation "io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-all:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-feign:${resilience4jVersion}"
+    implementation "io.github.openfeign:feign-core:${openfeignVersion}"
+    implementation "io.github.openfeign:feign-jackson:${openfeignVersion}"
+    implementation "io.github.openfeign:feign-httpclient:${openfeignVersion}"
+
+    // guava
+    implementation ("com.google.guava:guava:30.1.1-jre")
+
+
+
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+    implementation 'io.swagger.core.v3:swagger-annotations:2.1.2'
+    // cache
+    implementation ('com.github.ben-manes.caffeine:caffeine')
+    implementation 'org.keycloak:keycloak-admin-client:21.1.1'
+
+
+
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    implementation "org.zalando:problem-spring-web:0.27.0"
+
+    runtimeOnly 'com.h2database:h2'
+
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {

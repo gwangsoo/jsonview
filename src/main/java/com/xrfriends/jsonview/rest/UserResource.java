@@ -64,10 +64,19 @@ public class UserResource {
         return ResponseEntity.status(HttpStatus.OK).body(users);
     }
 
-    @PostMapping("/users")
+    @PostMapping("/users:1")
     @JsonView(UserDTO.Views.Detail.class)
-    public ResponseEntity<UserDTO> getUser(
-            @RequestBody @JsonView(value = {UserDTO.Views.Detail.class}) UserDTO newUser
+    public ResponseEntity<UserDTO> createUser1(
+            @RequestBody @JsonView(UserDTO.Views.Detail.class) UserDTO newUser
+    ) {
+        users.add(newUser);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
+    }
+
+    @PostMapping("/users:2")
+    @JsonView(UserDTO.Views.Id.class)
+    public ResponseEntity<UserDTO> createUser2(
+            @RequestBody @JsonView(UserDTO.Views.Detail.class) UserDTO newUser
     ) {
         users.add(newUser);
         return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
